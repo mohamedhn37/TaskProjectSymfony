@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{user.username}}
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block javascripts %}{% endblock %}
+
+{% block body %}
+	<div class="row my-5">
+		<div class="col-md-8 mx-auto">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">
+						<h3>{{user.email}}</h3>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="card-text">
+						{% if user.image == null %}
+							<img src="https://cdn.pixabay.com/photo/2014/04/03/11/47/avatar-312160_1280.png" width="150" height="150" alt={{user.username}} class="img-fluid rounded-circle">
+						{% else %}
+							<img src="{{asset('uploads/' ~ user.image) }}" width="150" height="150" alt={{user.username}} class="img-fluid rounded-circle">
+						{% endif %}
+					</div>
+					<form action={{path("upload_image")}} method="post" enctype="multipart/form-data">
+						<input type="file" name="image" id="image" class="form-control my-3">
+						<button type="submit" class="btn btn-primary my-2">Valider</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

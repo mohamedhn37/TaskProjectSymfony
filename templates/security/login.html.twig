@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	<div class="row my-5">
+		<div class="col-md-8 mx-auto">
+			<div class="card">
+				<form method="post">
+					{% if error %}
+						<div class="alert alert-danger">
+							Identifiants de connexion invalides. Veuillez réessayer.
+						</div>
+					{% endif %}
+					{% for message in app.flashes('success') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+					{% endfor %}
+					<div class="m-4">
+						<h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+						<div class="mb-3">
+							<label for="inputEmail" class="form-label">Email</label>
+							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+						</div>
+						<div class="mb-3">
+							<label for="inputPassword" class="form-label">Mot de passe</label>
+							<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+						</div>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						<button class="btn btn-lg btn-primary" type="submit">Connexion</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

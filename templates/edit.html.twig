@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+    <div class="row my-5">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h4>Modifier Task</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        {{ form(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
